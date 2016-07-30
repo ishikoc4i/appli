@@ -51,11 +51,6 @@ public class MainActivity extends Activity {
         });
 
         //videoView.setMediaController(new MediaController(this));
-
-
-
-
-
         
     }
 
