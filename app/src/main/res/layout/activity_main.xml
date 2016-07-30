@@ -15,86 +15,17 @@
         tools:layout_height="220dp"
         android:id="@+id/vV"/>
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list">
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true">
-
-            <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical" >
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic1"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic2"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic3"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic4"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic5"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic6"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic7"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pic8"
-                    android:scaleType="fitStart"
-                    android:adjustViewBounds="true"
-                    />
 
 
-            </LinearLayout>
+    </ListView>
 
-        </ScrollView>
+
 
 </LinearLayout>
 
