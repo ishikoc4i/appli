@@ -22,6 +22,7 @@ public class SplashActivity extends Activity {
         //randomImage a_1 = new randomImage();        //randomImageクラスをインスタンス化【a_1】
         //a_1.method();                               //メソッド呼び出し
 
+        
         Handler hdl = new Handler();
         hdl.postDelayed(new splashHandler(), startTime);    //指定した時間遅延させてsplashHandlerを実行
     }
