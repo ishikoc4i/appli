@@ -3,12 +3,9 @@ package com.codeforishinomaki.sample;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.test.FlakyTest;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.MediaController;
 import android.widget.VideoView;
 
 public class MainActivity extends Activity {
