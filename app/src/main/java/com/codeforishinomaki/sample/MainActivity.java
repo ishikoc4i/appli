@@ -29,8 +29,9 @@ public class MainActivity extends Activity {
                 this.getPackageName() + "/" + R.raw.movie));
 
         listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(new ImageListAdapter());
-
+        if (listView != null) {
+            listView.setAdapter(new ImageListAdapter());
+        }
 
         videoView.start();
 
