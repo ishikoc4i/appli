@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -33,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         videoView = (VideoView) findViewById(R.id.vV);
-        videoView.setVideoPath("R.raw.movie.mp4");
+        videoView.setVideoPath("R.raw.timera.mp4");
         videoView.setVideoURI(Uri.parse("android.resource://" +
-                this.getPackageName() + "/" + R.raw.movie));
+                this.getPackageName() + "/" + R.raw.timera));
 
         findViewById(R.id.rotate_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
             listView.setAdapter(new ImageListAdapter());
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                    ListAdapter adapter = listView.getAdapter();
+                    ImageListAdapter.LocationInfo item = (ImageListAdapter.LocationInfo) adapter.getItem(position);
+                    
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLocationURI())));
                 }
             });
         }
@@ -163,10 +167,12 @@ public class MainActivity extends AppCompatActivity {
         private static class LocationInfo {
             private int imageResourceId;
             private String timei;
+            private String locationURI;
 
-            public LocationInfo(int imageResourceId, String timei) {
+            public LocationInfo(int imageResourceId, String timei, String locationURI) {
                 this.imageResourceId = imageResourceId;
                 this.timei = timei;
+                this.locationURI = locationURI;
             }
 
             public int getImageResourceId() {
@@ -176,17 +182,21 @@ public class MainActivity extends AppCompatActivity {
             public String getTimei() {
                 return timei;
             }
+
+            public String getLocationURI() {
+                return locationURI;
+            }
         }
 
         private LocationInfo[] locations = {
-                new LocationInfo(R.drawable.pic1, " 河南西中学校"),
-                new LocationInfo(R.drawable.pic2, ""),
-                new LocationInfo(R.drawable.pic3, " 前谷地駅"),
-                new LocationInfo(R.drawable.pic4, " 前谷地駅前"),
-                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム"),
-                new LocationInfo(R.drawable.pic6, ""),
-                new LocationInfo(R.drawable.pic7, ""),
-                new LocationInfo(R.drawable.pic8, "")
+                new LocationInfo(R.drawable.pic1, " 河南西中学校", "geo:38.4315178,141.3093442?z=20"),
+                new LocationInfo(R.drawable.pic2, "", "geo:38.4315178,141.3093442?z=20"),
+                new LocationInfo(R.drawable.pic3, " 前谷地駅", "geo:38.4315178,141.3093442?z=20"),
+                new LocationInfo(R.drawable.pic4, " 前谷地駅前", "geo:38.4315178,141.3093442?z=20"),
+                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", "geo:38.4315178,141.3093442?z=20"),
+                new LocationInfo(R.drawable.pic6, "", "geo:38.4315178,141.3093442?z=20"),
+                new LocationInfo(R.drawable.pic7, "", "geo:38.4315178,141.3093442?z=20"),
+                new LocationInfo(R.drawable.pic8, "", "geo:38.4315178,141.3093442?z=20")
         };
 
 
