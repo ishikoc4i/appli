@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.rotate_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:38.4315178,141.3093442?z=20")));
+                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20")));
                 if (getScreenOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 } else {
