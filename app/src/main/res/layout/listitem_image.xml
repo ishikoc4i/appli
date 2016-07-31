@@ -5,6 +5,13 @@
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timei"
+        tools:text="aaa"
+        android:textSize="30sp"/>
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"

@@ -12,10 +12,14 @@ import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.VideoView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
         if (listView != null) {
             listView.setAdapter(new ImageListAdapter());
         }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
         videoView.start();
 
@@ -148,18 +159,44 @@ public class MainActivity extends AppCompatActivity {
 
     private static class ImageListAdapter extends BaseAdapter {
 
-        private int[] imageResourceIds = {R.drawable.pic1,R.drawable.pic2, R.drawable.pic3,
-                R.drawable.pic4, R.drawable.pic5, R.drawable.pic6, R.drawable.pic7, R.drawable.pic8};
+        private static class LocationInfo {
+            private int imageResourceId;
+            private String timei;
+
+            public LocationInfo(int imageResourceId, String timei) {
+                this.imageResourceId = imageResourceId;
+                this.timei = timei;
+            }
+
+            public int getImageResourceId() {
+                return imageResourceId;
+            }
+
+            public String getTimei() {
+                return timei;
+            }
+        }
+
+        private LocationInfo[] locations = {
+                new LocationInfo(R.drawable.pic1, "aaa"),
+                new LocationInfo(R.drawable.pic2, ""),
+                new LocationInfo(R.drawable.pic3, ""),
+                new LocationInfo(R.drawable.pic4, "bbb"),
+                new LocationInfo(R.drawable.pic5, ""),
+                new LocationInfo(R.drawable.pic6, ""),
+                new LocationInfo(R.drawable.pic7, "ccc"),
+                new LocationInfo(R.drawable.pic8, "")
+        };
 
 
         @Override
         public int getCount() {
-            return imageResourceIds.length;
+            return locations.length;
         }
 
         @Override
         public Object getItem(int i) {
-            return imageResourceIds[i];
+            return locations[i];
         }
 
         @Override
@@ -173,20 +210,34 @@ public class MainActivity extends AppCompatActivity {
             if (convertView == null) {
                 convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_image, parent, false);
                 ImageView iv = (ImageView) convertView.findViewById(R.id.image);
-                holder = new ViewHolder(iv);
+                TextView timei = (TextView) convertView.findViewById(R.id.timei);
+                holder = new ViewHolder(iv,timei);
+
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.image.setImageResource(imageResourceIds[position]);
+
+
+            LocationInfo location = locations[position];
+            holder.image.setImageResource(location.getImageResourceId());
+            if (location.getTimei().isEmpty()) {
+                holder.text.setVisibility(View.GONE);
+            } else {
+                holder.text.setVisibility(View.VISIBLE);
+            }
+            holder.text.setText(location.getTimei());
             return convertView;
         }
 
         private static class ViewHolder {
             public final ImageView image;
+            public final TextView text;
 
-            ViewHolder(ImageView iv) {
+
+            ViewHolder(ImageView iv, TextView timei) {
                 this.image = iv;
+                this.text = timei;
             }
         }
     }

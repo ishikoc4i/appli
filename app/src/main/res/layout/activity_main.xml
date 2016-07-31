@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_height="220dp"
-            android:id="@+id/vV"/>
+            android:id="@+id/vV"
+            android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/rotate_button"
