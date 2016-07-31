@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                     ImageListAdapter.LocationInfo item = (ImageListAdapter.LocationInfo) adapter.getItem(position);
                     
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLocationURI())));
+
+                    
                 }
             });
         }
@@ -189,14 +191,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private LocationInfo[] locations = {
-                new LocationInfo(R.drawable.pic1, " 河南西中学校", "geo:38.4315178,141.3093442?z=20"),
-                new LocationInfo(R.drawable.pic2, "", "geo:38.4315178,141.3093442?z=20"),
-                new LocationInfo(R.drawable.pic3, " 前谷地駅", "geo:38.4315178,141.3093442?z=20"),
-                new LocationInfo(R.drawable.pic4, " 前谷地駅前", "geo:38.4315178,141.3093442?z=20"),
-                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", "geo:38.4315178,141.3093442?z=20"),
-                new LocationInfo(R.drawable.pic6, "", "geo:38.4315178,141.3093442?z=20"),
-                new LocationInfo(R.drawable.pic7, "", "geo:38.4315178,141.3093442?z=20"),
-                new LocationInfo(R.drawable.pic8, "", "geo:38.4315178,141.3093442?z=20")
+                new LocationInfo(R.drawable.pic1, " 河南西中学校", "geo:38.496178,141.200487?z=16"),
+                new LocationInfo(R.drawable.pic2, "", "geo:38.496178,141.200487?z=16"),
+                new LocationInfo(R.drawable.pic3, " 前谷地駅", "geo:38.511985,141.194352?z=16"),
+                new LocationInfo(R.drawable.pic4, " 前谷地駅前", "geo:38.511985,141.194352?z=16"),
+                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", "geo:38.511985,141.194352?z=16"),
+                new LocationInfo(R.drawable.pic6, "", "geo:38.511985,141.194352?z=16"),
+                new LocationInfo(R.drawable.pic7, "", "geo:38.511985,141.194352?z=16"),
+                new LocationInfo(R.drawable.pic8, "", "geo:38.511985,141.194352?z=16")
         };
 
 
