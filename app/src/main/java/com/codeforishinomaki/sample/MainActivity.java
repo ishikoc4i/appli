@@ -255,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
             }
             holder.text.setText(location.getTimei());
             return convertView;
+
+            
         }
 
         private static class ViewHolder {
