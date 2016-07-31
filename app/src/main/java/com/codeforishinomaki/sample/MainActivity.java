@@ -1,6 +1,5 @@
 package com.codeforishinomaki.sample;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
@@ -20,8 +19,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.VideoView;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,10 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                     ListAdapter adapter = listView.getAdapter();
                     ImageListAdapter.LocationInfo item = (ImageListAdapter.LocationInfo) adapter.getItem(position);
-                    
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLocationURI())));
 
-                    
+                    String mapUri = createMapUri(adapter, position);
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mapUri)));
                 }
             });
         }
@@ -94,6 +90,24 @@ public class MainActivity extends AppCompatActivity {
 
         //videoView.setMediaController(new MediaController(this));
         
+    }
+
+    private String createMapUri(ListAdapter adapter, int position) {
+        final String locationName = getLocationName(adapter, position);
+        final String location = ((ImageListAdapter.LocationInfo) adapter.getItem(position)).getLocation();
+
+        return String.format("geo:0,0?q=%1$s(%2$s)&z=16", location, locationName);
+    }
+
+
+    private static String getLocationName(ListAdapter adapter, int position) {
+        for (int i = position; 0 <= i; i--) {
+            final ImageListAdapter.LocationInfo item = (ImageListAdapter.LocationInfo) adapter.getItem(i);
+            if (!item.getTimei().isEmpty()) {
+                return item.getTimei();
+            }
+        }
+        return "";
     }
 
     @Override
@@ -169,12 +183,12 @@ public class MainActivity extends AppCompatActivity {
         private static class LocationInfo {
             private int imageResourceId;
             private String timei;
-            private String locationURI;
+            private String location;
 
-            public LocationInfo(int imageResourceId, String timei, String locationURI) {
+            public LocationInfo(int imageResourceId, String timei, String location) {
                 this.imageResourceId = imageResourceId;
                 this.timei = timei;
-                this.locationURI = locationURI;
+                this.location = location;
             }
 
             public int getImageResourceId() {
@@ -185,20 +199,20 @@ public class MainActivity extends AppCompatActivity {
                 return timei;
             }
 
-            public String getLocationURI() {
-                return locationURI;
+            public String getLocation() {
+                return location;
             }
         }
 
         private LocationInfo[] locations = {
-                new LocationInfo(R.drawable.pic1, " 河南西中学校", "geo:38.496178,141.200487?z=16"),
-                new LocationInfo(R.drawable.pic2, "", "geo:38.496178,141.200487?z=16"),
-                new LocationInfo(R.drawable.pic3, " 前谷地駅", "geo:38.511985,141.194352?z=16"),
-                new LocationInfo(R.drawable.pic4, " 前谷地駅前", "geo:38.511985,141.194352?z=16"),
-                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", "geo:38.511985,141.194352?z=16"),
-                new LocationInfo(R.drawable.pic6, "", "geo:38.511985,141.194352?z=16"),
-                new LocationInfo(R.drawable.pic7, "", "geo:38.511985,141.194352?z=16"),
-                new LocationInfo(R.drawable.pic8, "", "geo:38.511985,141.194352?z=16")
+                new LocationInfo(R.drawable.pic1, " 河南西中学校", "38.496178,141.200487"),
+                new LocationInfo(R.drawable.pic2, "", "38.496178,141.200487"),
+                new LocationInfo(R.drawable.pic3, " 前谷地駅", "38.511985,141.194352"),
+                new LocationInfo(R.drawable.pic4, " 前谷地駅前", "38.511985,141.194352"),
+                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", "38.511985,141.194352"),
+                new LocationInfo(R.drawable.pic6, "", "38.511985,141.194352"),
+                new LocationInfo(R.drawable.pic7, "", "38.511985,141.194352"),
+                new LocationInfo(R.drawable.pic8, "", "38.511985,141.194352")
         };
 
 
