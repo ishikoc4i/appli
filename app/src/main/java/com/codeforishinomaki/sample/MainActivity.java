@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         videoView = (VideoView) findViewById(R.id.vV);
-        videoView.setVideoPath("R.raw.timera.mp4");
+        videoView.setVideoPath("R.raw.time5s.mp4");
         videoView.setVideoURI(Uri.parse("android.resource://" +
-                this.getPackageName() + "/" + R.raw.timera));
+                this.getPackageName() + "/" + R.raw.time5s));
 
         findViewById(R.id.rotate_button).setOnClickListener(new View.OnClickListener() {
             @Override
