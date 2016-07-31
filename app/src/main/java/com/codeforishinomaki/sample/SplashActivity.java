@@ -26,14 +26,11 @@ public class SplashActivity extends Activity {
 
     void randomImage(){      //ランダムに背景画像を決定するやつ実行
         int [] images = {
-                R.drawable.sp_pic1,
-                R.drawable.sp_pic2,
-                R.drawable.sp_pic3,
                 R.drawable.sp_pic4,
                 R.drawable.sp_pic5,
+                R.drawable.sp_pic3,
                 R.drawable.sp_pic6,
-                R.drawable.sp_pic7,
-                R.drawable.sp_pic8};
+                R.drawable.sp_pic7,};
 
         Random rnd = new Random();
         int ran = rnd.nextInt(images.length);
