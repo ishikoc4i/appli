@@ -17,14 +17,14 @@
         />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Iscene"
-        android:id="@+id/textView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="50dp"
-        android:background="#33fffc" />
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:text="Iscene"
+        android:textSize="50dp" />
 
 </FrameLayout>
