@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -62,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
         
-        videoView.start();
-
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -89,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //videoView.setMediaController(new MediaController(this));
-        
     }
 
     private String createMapUri(ListAdapter adapter, int position) {
@@ -114,8 +112,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        videoView.start();
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                videoView.seekTo(0);
+                videoView.start();
+            }
+        }, 500);
     }
 
     // http://stackoverflow.com/questions/10380989/how-do-i-get-the-current-orientation-activityinfo-screen-orientation-of-an-a
