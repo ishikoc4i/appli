@@ -32,7 +32,8 @@ public class SplashActivity extends Activity {
                 R.drawable.sp_pic4,
                 R.drawable.sp_pic5,
                 R.drawable.sp_pic6,
-                R.drawable.sp_pic7};
+                R.drawable.sp_pic7,
+                R.drawable.sp_pic8};
 
         Random rnd = new Random();
         int ran = rnd.nextInt(images.length);
