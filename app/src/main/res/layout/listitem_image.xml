@@ -9,8 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/timei"
-        tools:text="aaa"
-        android:textSize="30sp"/>
+        tools:text=" aaa"
+        android:textSize="30sp"
+
+        android:textColor="#000000" />
 
     <ImageView
         android:id="@+id/image"

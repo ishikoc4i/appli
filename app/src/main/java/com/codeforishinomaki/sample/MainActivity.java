@@ -179,13 +179,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private LocationInfo[] locations = {
-                new LocationInfo(R.drawable.pic1, "aaa"),
+                new LocationInfo(R.drawable.pic1, " 蛇田"),
                 new LocationInfo(R.drawable.pic2, ""),
                 new LocationInfo(R.drawable.pic3, ""),
-                new LocationInfo(R.drawable.pic4, "bbb"),
+                new LocationInfo(R.drawable.pic4, " 鹿又"),
                 new LocationInfo(R.drawable.pic5, ""),
                 new LocationInfo(R.drawable.pic6, ""),
-                new LocationInfo(R.drawable.pic7, "ccc"),
+                new LocationInfo(R.drawable.pic7, " 前谷地"),
                 new LocationInfo(R.drawable.pic8, "")
         };
 
