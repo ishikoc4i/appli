@@ -1,6 +1,7 @@
 package com.codeforishinomaki.sample;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.rotate_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:38.4315178,141.3093442?z=20")));
                 if (getScreenOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 } else {
@@ -50,15 +52,14 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
         if (listView != null) {
             listView.setAdapter(new ImageListAdapter());
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+            });
         }
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-        });
-
+        
         videoView.start();
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
