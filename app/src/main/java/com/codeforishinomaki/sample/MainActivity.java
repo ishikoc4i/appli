@@ -2,11 +2,15 @@ package com.codeforishinomaki.sample;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.location.Location;
 import android.media.MediaPlayer;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
+import android.telecom.Call;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,6 +24,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.VideoView;
+
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,12 +63,26 @@ public class MainActivity extends AppCompatActivity {
                     ListAdapter adapter = listView.getAdapter();
                     ImageListAdapter.LocationInfo item = (ImageListAdapter.LocationInfo) adapter.getItem(position);
 
-                    String mapUri = createMapUri(adapter, position);
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mapUri)));
+//                    String mapUri = createMapUri(adapter, position);
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mapUri)));
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+
+                    String seltimei = item.kariTimei;
+                    int selimage = item.imageResourceId;
+                    String sellocation = item.location;
+
+                    intent.putExtra("timei", seltimei);
+                    intent.putExtra("image", selimage);
+                    intent.putExtra("location", sellocation);
+
+                    startActivity(intent);
+                    overridePendingTransition(R.animator.slide_in_right, R.animator.slide_out_left);
+
+
                 }
             });
         }
-        
+
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -185,13 +205,19 @@ public class MainActivity extends AppCompatActivity {
 
         private static class LocationInfo {
             private int imageResourceId;
+            private String kariTimei;
             private String timei;
-            private String location;
+            private  String location;
 
-            public LocationInfo(int imageResourceId, String timei, String location) {
+            public LocationInfo(int imageResourceId, String karitimei, String timei, String location) {
                 this.imageResourceId = imageResourceId;
+                this.kariTimei = karitimei;
                 this.timei = timei;
                 this.location = location;
+            }
+
+            public String getKaritimei(){
+                return kariTimei;
             }
 
             public int getImageResourceId() {
@@ -207,15 +233,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+      //  "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20"
         private LocationInfo[] locations = {
-                new LocationInfo(R.drawable.pic1, " 河南西中学校", "38.496178,141.200487"),
-                new LocationInfo(R.drawable.pic2, "", "38.496178,141.200487"),
-                new LocationInfo(R.drawable.pic3, " 前谷地駅", "38.511985,141.194352"),
-                new LocationInfo(R.drawable.pic4, " 前谷地駅前", "38.511985,141.194352"),
-                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", "38.511985,141.194352"),
-                new LocationInfo(R.drawable.pic6, "", "38.511985,141.194352"),
-                new LocationInfo(R.drawable.pic7, "", "38.511985,141.194352"),
-                new LocationInfo(R.drawable.pic8, "", "38.511985,141.194352")
+                new LocationInfo( R.drawable.pic1, "河南西中学校", " 河南西中学校", "geo:0,0?q=38.496178,141.200487(河南西中学校)&z=20"),
+                new LocationInfo(R.drawable.pic2, "河南西中学校", "", "geo:0,0?q=38.496178,141.200487(河南西中学校)&z=20"),
+                new LocationInfo(R.drawable.pic3, "前谷地駅", " 前谷地駅", "geo:0,0?q=38.511985,141.194352(前谷地駅)&z=20"),
+                new LocationInfo(R.drawable.pic4, "前谷地駅前", " 前谷地駅前", "geo:0,0?q=38.511985,141.194352(前谷地駅前)&z=20"),
+                new LocationInfo(R.drawable.pic5, "前谷地駅ホーム", " 前谷地駅ホーム", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20"),
+                new LocationInfo(R.drawable.pic6, "前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20"),
+                new LocationInfo(R.drawable.pic7, "前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20"),
+                new LocationInfo(R.drawable.pic8, "前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20"),
+                new LocationInfo(R.drawable.pic9, "旭山", " 旭山", "geo:0,0?q=38.490462,141.180866(旭山)&z=20"),
+                new LocationInfo(R.drawable.pic10, "旭山", "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20"),
+                new LocationInfo(R.drawable.pic11, "旭山",  "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20"),
+                new LocationInfo(R.drawable.pic12, "旭山", "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20"),
+                new LocationInfo(R.drawable.pic13, "旭山", "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20"),
+                new LocationInfo(R.drawable.pic14, "旭山", "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20"),
+                new LocationInfo(R.drawable.pic15, "旭山", "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20"),
+                new LocationInfo(R.drawable.pic16, "旭山", "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20")
         };
 
 
@@ -259,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
             holder.text.setText(location.getTimei());
             return convertView;
 
-            
+
         }
 
         private static class ViewHolder {
