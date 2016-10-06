@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         listView = (ListView) findViewById(R.id.list);
         if (listView != null) {
             listView.setAdapter(new ImageListAdapter());
