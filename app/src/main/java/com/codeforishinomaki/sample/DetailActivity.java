@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.Map;
-
 public class DetailActivity extends AppCompatActivity {
-    TextView textView, detailText;
+    TextView detailText, detailText2;
     ImageView imageView;
     Button button;
 
@@ -27,12 +23,19 @@ public class DetailActivity extends AppCompatActivity {
         String selTimei = intent.getStringExtra("timei");
         int selImage = intent.getIntExtra("image",0);
         final String selLoation = intent.getStringExtra("location");
+        String selDetail = intent.getStringExtra("detail");
 
-        textView = (TextView)findViewById(R.id.detailtext);
-        textView.setText(selTimei);
+        detailText = (TextView)findViewById(R.id.detailtext);
+        detailText.setText(selTimei);
         imageView = (ImageView)findViewById(R.id.detailimage);
         imageView.setImageResource(selImage);
-        detailText = (TextView)findViewById(R.id.detailtext2);
+        detailText2 = (TextView)findViewById(R.id.detailtext2);
+        detailText2.setText(selDetail);
+
+
+
+
+
 
         button = (Button)findViewById(R.id.mapbutton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -47,5 +50,11 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        overridePendingTransition(R.animator.slide_out_right, R.animator.slide_in_left);
+    }
 }
 
