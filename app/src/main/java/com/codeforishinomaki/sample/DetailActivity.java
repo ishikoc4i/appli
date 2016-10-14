@@ -55,6 +55,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
+
         RightButton = (ImageView)findViewById(R.id.right_button);
         LeftButton = (ImageView)findViewById(R.id.left_button);
 
@@ -76,7 +77,6 @@ public class DetailActivity extends AppCompatActivity {
         Point2 = (ImageView)findViewById(R.id.point2);
         Point1.setImageResource(R.drawable.point_light);
         Point2.setImageResource(R.drawable.point_dark);
-
 
         PointDarkLight();
 
@@ -159,6 +159,7 @@ public class DetailActivity extends AppCompatActivity {
                 PointDarkLight();
             }
         });
+
     }
 
     private void PointDarkLight(){
@@ -217,4 +218,3 @@ public class DetailActivity extends AppCompatActivity {
         overridePendingTransition(R.animator.slide_out_right, R.animator.slide_in_left);
     }
 }
-
