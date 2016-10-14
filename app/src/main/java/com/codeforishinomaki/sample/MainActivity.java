@@ -23,7 +23,7 @@ import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
 
-    VideoView videoView;
+//    VideoView videoView;
     ListView listView;
 
     @Override
@@ -31,22 +31,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        videoView = (VideoView) findViewById(R.id.vV);
-        videoView.setVideoPath("R.raw.movie.mp4");
-        videoView.setVideoURI(Uri.parse("android.resource://" +
-                this.getPackageName() + "/" + R.raw.movie));
-
-        findViewById(R.id.rotate_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20")));
-                if (getScreenOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                } else {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                }
-            }
-        });
+//        videoView = (VideoView) findViewById(R.id.vV);
+//        videoView.setVideoPath("R.raw.movie.mp4");
+//        videoView.setVideoURI(Uri.parse("android.resource://" +
+//                this.getPackageName() + "/" + R.raw.movie));
+//
+//        findViewById(R.id.rotate_button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20")));
+//                if (getScreenOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+//                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//                } else {
+//                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//                }
+//            }
+//        });
 
 
         listView = (ListView) findViewById(R.id.list);
@@ -80,29 +80,29 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                videoView.seekTo(0);
-                videoView.start();
-            }
-        });
+//        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                videoView.seekTo(0);
+//                videoView.start();
+//            }
+//        });
 
-        videoView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (event.getAction() == MotionEvent.ACTION_UP){
-                    if (videoView.isPlaying()) {
-                        videoView.pause();
-                    }else{
-                        videoView.start();
-                    }
-                }
-
-                return true;
-            }
-        });
+//        videoView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//
+//                if (event.getAction() == MotionEvent.ACTION_UP){
+//                    if (videoView.isPlaying()) {
+//                        videoView.pause();
+//                    }else{
+//                        videoView.start();
+//                    }
+//                }
+//
+//                return true;
+//            }
+//        });
 
         //videoView.setMediaController(new MediaController(this));
     }
@@ -129,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                videoView.seekTo(0);
-                videoView.start();
-            }
-        }, 500);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                videoView.seekTo(0);
+//                videoView.start();
+//            }
+//        }, 500);
     }
 
     // http://stackoverflow.com/questions/10380989/how-do-i-get-the-current-orientation-activityinfo-screen-orientation-of-an-a
@@ -241,20 +241,20 @@ public class MainActivity extends AppCompatActivity {
         private LocationInfo[] locations = {
                 new LocationInfo( R.drawable.pic1, " 河南西中学校", " 河南西中学校", "geo:0,0?q=38.496178,141.200487(河南西中学校)&z=20",
                         "   撮影場所:河南西中の住所\n   撮影時期:夏"),
-                new LocationInfo(R.drawable.pic2, " 河南西中学校", "", "geo:0,0?q=38.496178,141.200487(河南西中学校)&z=20",
-                        "   撮影場所:河南西中の住所\n   撮影時期:夏"),
-                new LocationInfo(R.drawable.pic3, " 前谷地駅", " 前谷地駅", "geo:0,0?q=38.511985,141.194352(前谷地駅)&z=20",
-                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
-                new LocationInfo(R.drawable.pic4, " 前谷地駅前", " 前谷地駅前", "geo:0,0?q=38.511985,141.194352(前谷地駅前)&z=20",
-                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
-                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", " 前谷地駅ホーム", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
-                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
-                new LocationInfo(R.drawable.pic6, " 前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
-                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
-                new LocationInfo(R.drawable.pic7, " 前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
-                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
-                new LocationInfo(R.drawable.pic8, " 前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
-                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
+//                new LocationInfo(R.drawable.pic2, " 河南西中学校", "", "geo:0,0?q=38.496178,141.200487(河南西中学校)&z=20",
+//                        "   撮影場所:河南西中の住所\n   撮影時期:夏"),
+//                new LocationInfo(R.drawable.pic3, " 前谷地駅", " 前谷地駅", "geo:0,0?q=38.511985,141.194352(前谷地駅)&z=20",
+//                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
+//                new LocationInfo(R.drawable.pic4, " 前谷地駅前", " 前谷地駅前", "geo:0,0?q=38.511985,141.194352(前谷地駅前)&z=20",
+//                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
+//                new LocationInfo(R.drawable.pic5, " 前谷地駅ホーム", " 前谷地駅ホーム", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
+//                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
+//                new LocationInfo(R.drawable.pic6, " 前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
+//                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
+//                new LocationInfo(R.drawable.pic7, " 前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
+//                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
+//                new LocationInfo(R.drawable.pic8, " 前谷地駅ホーム", "", "geo:0,0?q=38.511985,141.194352(前谷地駅ホーム)&z=20",
+//                        "   撮影場所:前谷地駅の住所\n   撮影時期:夏"),
                 new LocationInfo(R.drawable.pic9, " 旭山", " 旭山", "geo:0,0?q=38.490462,141.180866(旭山)&z=20",
                         "   撮影場所:旭山の住所\n   撮影時期:夏"),
                 new LocationInfo(R.drawable.pic10, " 旭山", "", "geo:0,0?q=38.490462,141.180866(旭山)&z=20",

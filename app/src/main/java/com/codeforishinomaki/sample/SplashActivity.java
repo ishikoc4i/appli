@@ -45,6 +45,7 @@ public class SplashActivity extends Activity {
             //スプラッシュ完了後に実行するAcitivtyを指定する
             Intent intent = new Intent(getApplication(), MainActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.animator.slide_in_down, R.animator.slide_out_up);
             //SplashActivityを終了させる
             SplashActivity.this.finish();
         }

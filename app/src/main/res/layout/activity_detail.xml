@@ -1,90 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:weightSum="105"
     android:orientation="vertical"
-
+    android:weightSum="100"
     tools:context="com.codeforishinomaki.sample.DetailActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:textSize="26dp"
-        android:id="@+id/detailtext"
-        android:textColor="#000000"
-        tools:text=" aaa"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
-        android:id="@+id/detailimage"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="30"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:weightSum="100">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"/>
+        <include layout="@layout/detailtitleber"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="90"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            tools:text="詳細説明"
-            android:textColor="#000000"
-            android:background="@drawable/frame_style"
-            android:id="@+id/detailtext2"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="45"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                />
+
+            <com.google.vr.sdk.widgets.pano.VrPanoramaView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="94"
+                android:id="@+id/vr_view"
+                android:scrollbars="none">
+
+
+            </com.google.vr.sdk.widgets.pano.VrPanoramaView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                />
+
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="17"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+
+
+            <ViewFlipper
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:id="@+id/flipper"
+                >
+
+                <include layout="@layout/picture_item1"/>
+
+                <include layout="@layout/picture_item2"/>
+
+            </ViewFlipper>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="22">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/point_dark"
+                android:layout_weight="1"
+                android:id="@+id/point1"
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/point_dark"
+                android:layout_weight="1"
+                android:id="@+id/point2"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="13"
-        android:weightSum="100"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="60"/>
+            android:weightSum="100"
+            android:orientation="vertical">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="40"
-            android:layout_gravity="right"
-            android:text="マップ"
-            android:textSize="25dp"
-            android:id="@+id/mapbutton"
-            />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="53"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15"
+                    android:weightSum="100">
 
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="5"
+                        android:src="@drawable/alloww"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:id="@+id/left_button"
+                        />
 
-    </LinearLayout>
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="90"/>
 
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="5"
+                        android:src="@drawable/allowww"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:id="@+id/right_button" />
 
+                </LinearLayout>
 
-</LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
