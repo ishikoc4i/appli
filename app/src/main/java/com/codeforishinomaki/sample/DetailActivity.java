@@ -40,6 +40,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        
+
+
         panoWidgetView = (VrPanoramaView) findViewById(R.id.vr_view);
         loadPanoImage();
 
