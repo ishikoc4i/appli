@@ -24,10 +24,13 @@
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#ff000000"
+            android:id="@+id/placename"
+            tools:text=" トヤケ森山"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -142,6 +145,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:id="@+id/mapIcon"
                 android:src="@drawable/mapicon"
                 android:scaleType="fitStart"/>
 

@@ -22,11 +22,13 @@ public class DetailActivity extends AppCompatActivity {
 
     float posX;
 
+    TextView PlaceName;
     ViewFlipper viewFlipper;
     ImageView RightButton, LeftButton;
     ImageView pic1, pic2, pic3, pic4, pic5, pic6;
     ImageView BackAllow;
     ImageView Point1, Point2;
+    ImageView Map;
 
     int pointdecision = 0;
 
@@ -39,9 +41,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        
-
 
         panoWidgetView = (VrPanoramaView) findViewById(R.id.vr_view);
         loadPanoImage();
@@ -56,6 +55,9 @@ public class DetailActivity extends AppCompatActivity {
 
             }
         });
+
+        PlaceName = (TextView) findViewById(R.id.placename);
+        PlaceName.setText(" トヤケ森山(馬っ子山)");
 
         viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
 
@@ -82,6 +84,15 @@ public class DetailActivity extends AppCompatActivity {
         Point2.setImageResource(R.drawable.point_dark);
 
         PointDarkLight();
+
+        Map = (ImageView) findViewById(R.id.mapIcon);
+
+        Map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=38.468751,141.29882(トヤケ森山(馬っ子山))&z=20")));
+            }
+        });
 
         inFromRightAnimation =
                 AnimationUtils.loadAnimation(this, R.anim.right_in);
@@ -217,7 +228,6 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-        overridePendingTransition(R.animator.slide_out_right, R.animator.slide_in_left);
+        overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
     }
 }
