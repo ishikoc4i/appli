@@ -23,6 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter(Context context, LocationInfo[] locationInfo, OnRecyclerViewItemClickListener listener) {
         super();
         mContext = context;
+        mClickListener = listener;
         mLayoutInflater = LayoutInflater.from(context);
         mLocationInfo = locationInfo;
     }
@@ -58,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Toast.makeText(mContext, title + " clicked", Toast.LENGTH_SHORT).show();
                 if (mClickListener != null) {
                     mClickListener.onItemSelected(v, position);
-                }
+               }
             }
         });
     }

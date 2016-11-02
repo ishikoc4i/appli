@@ -62,22 +62,26 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
      * @param position クリックされたアイテムの位置
      */
     public void onItemSelected(View clickedView, int position) {
-        //TODO RecyclerViewのアイテムがクリックされた時の処理をここに書く
-
+        // RecyclerViewのアイテムがクリックされた時の処理をここに書く
         //TODO positionを使ってConstantsのlocationsから、position番目のアイテム情報を取得
-
+        LocationInfo info = Constants.locations[position];
+        String timei = info.getTimei();
+        String detail = info.getDetail();
+       // String karitimei = info.getKaritimei();
+        String location = info.getLocation();
+        int  imageResourceId = info.getImageResourceId();
         //TODO 取り出したlocationsを使って、下のような感じでIntentに選択された情報を入力していく
-//        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+       Intent intent = new Intent(MainActivity.this, DetailActivity.class);
 //        String seltimei = item.kariTimei;
 //        int selimage = item.imageResourceId;
 //        String sellocation = item.location;
 //        String selldetail = item.detail;
 //
-//        intent.putExtra("timei", seltimei);
-//        intent.putExtra("image", selimage);
-//        intent.putExtra("location", sellocation);
-//        intent.putExtra("detail", selldetail);
-
+        intent.putExtra("timei", timei);
+        intent.putExtra("image", imageResourceId);
+        intent.putExtra("location", location);
+        intent.putExtra("detail", detail);
+        startActivity(intent);
         //TODO 最後にStartActivityで詳細のアクティビティに遷移を指せる
     }
 }
