@@ -9,32 +9,10 @@
 
     <include layout="@layout/hometitleber"/>
 
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
-
-        <!--<VideoView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--tools:layout_height="220dp"-->
-            <!--android:id="@+id/vV"-->
-            <!--android:layout_gravity="center"/>-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/rotate_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="bottom|end"-->
-            <!--android:src="@drawable/ic_aspect_ratio_black_24dp"-->
-            <!--android:contentDescription="@string/rotate" />-->
-    <!--</FrameLayout>-->
-
-    <include layout="@layout/part_image_list"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
 
 </LinearLayout>
-
-
-
-
-
-
