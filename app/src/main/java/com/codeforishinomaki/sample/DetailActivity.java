@@ -245,7 +245,7 @@ public class DetailActivity extends AppCompatActivity {
         }else if (pos == 4){
             panoImageName = "image3603.jpg";
         }else if (pos == 5){
-            panoImageName = "image3604.jpg";
+            panoImageName = "image3606.jpg";
         }
 
         // create the task passing the widget view and call execute to start.
