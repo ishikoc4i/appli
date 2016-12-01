@@ -15,15 +15,16 @@
         android:scaleType="centerCrop"
         android:layout_weight="0" />
 
-    <TextView
+
+        <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
+            android:layout_gravity="center"
         android:textColor="#ffffff"
         android:text="Iscene"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
 </FrameLayout>

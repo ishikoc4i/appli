@@ -3,7 +3,9 @@ package com.codeforishinomaki.sample;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -11,7 +13,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
 
 public class DetailActivity extends AppCompatActivity {
@@ -25,7 +26,6 @@ public class DetailActivity extends AppCompatActivity {
     ViewFlipper viewFlipper;
     ImageView RightButton, LeftButton;
     ImageView pic1, pic2, pic3, pic4, pic5, pic6;
-    ImageView BackAllow;
     ImageView Point1, Point2;
     ImageView Map;
 
@@ -36,27 +36,25 @@ public class DetailActivity extends AppCompatActivity {
     Animation outToRightAnimation;
     Animation outToLeftAnimation;
 
+    android.support.v7.app.ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         panoWidgetView = (VrPanoramaView) findViewById(R.id.vr_view);
         loadPanoImage();
 
-        BackAllow = (ImageView)findViewById(R.id.backallow);
-
-        BackAllow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
-
-            }
-        });
-
         PlaceName = (TextView) findViewById(R.id.placename);
         PlaceName.setText(" トヤケ森山(馬っ子山)");
+
+        //タイトルバーの名前が変更できる
+        setTitle("トヤケ森山(馬っ子山)");
 
         viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
 
@@ -183,6 +181,16 @@ public class DetailActivity extends AppCompatActivity {
             Point1.setImageResource(R.drawable.point_dark);
             Point2.setImageResource(R.drawable.point_light);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
