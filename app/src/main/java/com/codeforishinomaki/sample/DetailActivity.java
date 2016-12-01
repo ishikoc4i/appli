@@ -28,7 +28,6 @@ public class DetailActivity extends AppCompatActivity {
     ViewFlipper viewFlipper;
     ImageView RightButton, LeftButton;
     ImageView pic1, pic2, pic3, pic4, pic5, pic6;
-    ImageView BackAllow;
     ImageView Point1, Point2;
     ImageView Map;
 
@@ -61,20 +60,6 @@ public class DetailActivity extends AppCompatActivity {
         pos = intent.getIntExtra("pos", 0);
         loadPanoImage();
 
-        BackAllow = (ImageView)findViewById(R.id.backallow);
-
-        BackAllow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
-
-            }
-        });
-
-        PlaceName = (TextView) findViewById(R.id.placename);
-        PlaceName.setText(timei);
-
         viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
 
         RightButton = (ImageView)findViewById(R.id.right_button);
@@ -100,6 +85,8 @@ public class DetailActivity extends AppCompatActivity {
         Point2.setImageResource(R.drawable.point_dark);
 
         PointDarkLight();
+        //タイトルバーの名前が変更できる
+        setTitle(timei);
 
         Map = (ImageView) findViewById(R.id.mapIcon);
 
