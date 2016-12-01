@@ -203,6 +203,7 @@ public class DetailActivity extends AppCompatActivity {
             Point2.setImageResource(R.drawable.point_light);
         }
     }
+    
 
     @Override
     public void onPause() {
