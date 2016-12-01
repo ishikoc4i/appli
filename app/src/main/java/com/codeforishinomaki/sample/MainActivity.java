@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         //TODO positionを使ってConstantsのlocationsから、position番目のアイテム情報を取得
         LocationInfo info = Constants.locations[position];
         String timei = info.getTimei();
+        int pos = info.pos();
         String detail = info.getDetail();
         String location = info.getLocation();
         int  imageResourceId = info.getImageResourceId();
@@ -58,10 +59,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         //TODO 取り出したlocationsを使って、下のような感じでIntentに選択された情報を入力していく
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
         intent.putExtra("timei", timei);
+        intent.putExtra("pos",pos);
         intent.putExtra("image", imageResourceId);
         intent.putExtra("location", location);
         intent.putExtra("detail", detail);
         startActivity(intent);
         //TODO 最後にStartActivityで詳細のアクティビティに遷移を指せる
     }
+
+
 }
