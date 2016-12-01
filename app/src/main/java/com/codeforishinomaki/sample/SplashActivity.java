@@ -39,8 +39,6 @@ public class SplashActivity extends Activity {
         ImageView view = (ImageView)this.findViewById(R.id.image01);
         view.setImageResource(imageid);
 
-        TextView textView = (TextView) findViewById(R.id.textView2);
-
     }
 
     class splashHandler implements Runnable{
