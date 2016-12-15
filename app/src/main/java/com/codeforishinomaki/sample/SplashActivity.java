@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -37,6 +38,7 @@ public class SplashActivity extends Activity {
 
         ImageView view = (ImageView)this.findViewById(R.id.image01);
         view.setImageResource(imageid);
+
     }
 
     class splashHandler implements Runnable{

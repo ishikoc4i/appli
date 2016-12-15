@@ -9,12 +9,14 @@ public class LocationInfo {
     private String kariTimei;
     private String timei;
     private String location;
+    private int pos;
     private String detail;
 
 
-    public LocationInfo(int imageResourceId, String karitimei, String timei, String location, String detailt) {
+    public LocationInfo(int imageResourceId,int pos, String karitimei, String timei, String location, String detailt) {
         this.imageResourceId = imageResourceId;
         this.kariTimei = karitimei;
+        this.pos =pos;
         this.timei = timei;
         this.location = location;
         this.detail = detailt;
@@ -26,6 +28,10 @@ public class LocationInfo {
 
     public int getImageResourceId() {
         return imageResourceId;
+    }
+
+    public int pos(){
+        return pos;
     }
 
     public String getTimei() {

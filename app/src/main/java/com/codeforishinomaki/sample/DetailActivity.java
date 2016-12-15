@@ -2,17 +2,20 @@ package com.codeforishinomaki.sample;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
+
+import java.sql.Time;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -29,12 +32,20 @@ public class DetailActivity extends AppCompatActivity {
     ImageView Point1, Point2;
     ImageView Map;
 
+    String timei;
+    String location;
+    int imageResorceId;
+    int pos;
+
+
     int pointdecision = 0;
 
     Animation inFromRightAnimation;
     Animation inFromLeftAnimation;
     Animation outToRightAnimation;
     Animation outToLeftAnimation;
+    int TimeiInt;
+    String PanoImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,21 +53,27 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         panoWidgetView = (VrPanoramaView) findViewById(R.id.vr_view);
+
+        Intent intent = getIntent();
+        timei = intent.getStringExtra("timei");
+        location = intent.getStringExtra("location");
+        imageResorceId = intent.getIntExtra("image", 0);
+        pos = intent.getIntExtra("pos", 0);
         loadPanoImage();
 
-        BackAllow = (ImageView)findViewById(R.id.backallow);
+//        BackAllow = (ImageView)findViewById(R.id.backallow);
+//
+//        BackAllow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//                overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
+//
+//            }
+//        });
 
-        BackAllow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
-
-            }
-        });
-
-        PlaceName = (TextView) findViewById(R.id.placename);
-        PlaceName.setText(" トヤケ森山(馬っ子山)");
+//        PlaceName = (TextView) findViewById(R.id.placename);
+//        PlaceName.setText(timei);
 
         viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
 
@@ -83,13 +100,15 @@ public class DetailActivity extends AppCompatActivity {
         Point2.setImageResource(R.drawable.point_dark);
 
         PointDarkLight();
+        //タイトルバーの名前が変更できる
+        setTitle(timei);
 
         Map = (ImageView) findViewById(R.id.mapIcon);
 
         Map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=38.468751,141.29882(トヤケ森山(馬っ子山))&z=20")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(location)));
             }
         });
 
@@ -184,6 +203,7 @@ public class DetailActivity extends AppCompatActivity {
             Point2.setImageResource(R.drawable.point_light);
         }
     }
+    
 
     @Override
     public void onPause() {
@@ -204,6 +224,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    String panoImageName;
+
     private synchronized void loadPanoImage() {
         ImageLoaderTask task = backgroundImageLoaderTask;
         if (task != null && !task.isCancelled()) {
@@ -216,7 +238,18 @@ public class DetailActivity extends AppCompatActivity {
         viewOptions.inputType = VrPanoramaView.Options.TYPE_MONO;
 
         // use the name of the image in the assets/ directory.
-        String panoImageName = "mountain.jpg";
+
+        if (pos == 1){
+            panoImageName = "mountain.jpg";
+        }else if (pos == 2){
+            panoImageName = "image3601.jpg";
+        }else if (pos == 3){
+            panoImageName = "image3602.jpg";
+        }else if (pos == 4){
+            panoImageName = "image3603.jpg";
+        }else if (pos == 5){
+            panoImageName = "image3606.jpg";
+        }
 
         // create the task passing the widget view and call execute to start.
         task = new ImageLoaderTask(panoWidgetView, viewOptions, panoImageName);
