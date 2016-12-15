@@ -21,11 +21,10 @@ public class DetailActivity extends AppCompatActivity {
 
     float posX;
 
-    TextView PlaceName;
+    TextView AddressText;
     ViewFlipper viewFlipper;
     ImageView RightButton, LeftButton;
     ImageView pic1, pic2, pic3, pic4, pic5, pic6;
-    ImageView BackAllow;
     ImageView Point1, Point2;
     ImageView Map;
 
@@ -33,7 +32,7 @@ public class DetailActivity extends AppCompatActivity {
     String location;
     int imageResorceId;
     int pos;
-
+    String address;
 
     int pointdecision = 0;
 
@@ -52,11 +51,13 @@ public class DetailActivity extends AppCompatActivity {
         panoWidgetView = (VrPanoramaView) findViewById(R.id.vr_view);
 
         Intent intent = getIntent();
+        pos = intent.getIntExtra("pos", 0);
         timei = intent.getStringExtra("timei");
         location = intent.getStringExtra("location");
         imageResorceId = intent.getIntExtra("image", 0);
-        pos = intent.getIntExtra("pos", 0);
-        loadPanoImage();
+
+        address = intent.getStringExtra("address");
+
 
 //        BackAllow = (ImageView)findViewById(R.id.backallow);
 //
@@ -108,6 +109,9 @@ public class DetailActivity extends AppCompatActivity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(location)));
             }
         });
+
+        AddressText = (TextView) findViewById(R.id.addressText);
+        AddressText.setText(address);
 
         inFromRightAnimation =
                 AnimationUtils.loadAnimation(this, R.anim.right_in);
@@ -188,7 +192,7 @@ public class DetailActivity extends AppCompatActivity {
                 PointDarkLight();
             }
         });
-
+        loadPanoImage();
     }
 
     private void PointDarkLight(){
@@ -237,15 +241,15 @@ public class DetailActivity extends AppCompatActivity {
         // use the name of the image in the assets/ directory.
 
         if (pos == 1){
-            panoImageName = "mountain.jpg";
-        }else if (pos == 2){
-            panoImageName = "image3601.jpg";
-        }else if (pos == 3){
-            panoImageName = "image3602.jpg";
-        }else if (pos == 4){
-            panoImageName = "image3603.jpg";
-        }else if (pos == 5){
             panoImageName = "image3606.jpg";
+        }else if (pos == 2){
+            panoImageName = "macroom360.jpg";
+        }else if (pos == 3){
+            panoImageName = "mountain.jpg";
+        }else if (pos == 4){
+            panoImageName = "image3601.jpg";
+        }else if (pos == 5){
+            panoImageName = "image3602.jpg";
         }
 
         // create the task passing the widget view and call execute to start.

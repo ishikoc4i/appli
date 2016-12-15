@@ -51,17 +51,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         LocationInfo info = Constants.locations[position];
         String timei = info.getTimei();
         int pos = info.pos();
-        String detail = info.getDetail();
         String location = info.getLocation();
         int  imageResourceId = info.getImageResourceId();
+        String address = info.getAddress();
         
         //TODO 取り出したlocationsを使って、下のような感じでIntentに選択された情報を入力していく
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
         intent.putExtra("timei", timei);
-        intent.putExtra("pos",pos);
+        intent.putExtra("pos", pos);
         intent.putExtra("image", imageResourceId);
         intent.putExtra("location", location);
-        intent.putExtra("detail", detail);
+        intent.putExtra("address", address);
         startActivity(intent);
         //TODO 最後にStartActivityで詳細のアクティビティに遷移を指せる
     }

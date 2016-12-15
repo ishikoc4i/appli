@@ -6,25 +6,22 @@ package com.codeforishinomaki.sample;
 
 public class LocationInfo {
     private int imageResourceId;
-    private String kariTimei;
     private String timei;
     private String location;
     private int pos;
-    private String detail;
+    private String address;
 
 
-    public LocationInfo(int imageResourceId,int pos, String karitimei, String timei, String location, String detailt) {
+
+    public LocationInfo(int imageResourceId,int pos, String timei, String location, String address) {
         this.imageResourceId = imageResourceId;
-        this.kariTimei = karitimei;
         this.pos =pos;
         this.timei = timei;
         this.location = location;
-        this.detail = detailt;
+        this.address = address;
+
     }
 
-    public String getKaritimei(){
-        return kariTimei;
-    }
 
     public int getImageResourceId() {
         return imageResourceId;
@@ -42,7 +39,8 @@ public class LocationInfo {
         return location;
     }
 
-    public String getDetail(){
-        return detail;
+    public String getAddress() {
+        return address;
     }
+
 }

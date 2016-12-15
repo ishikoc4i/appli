@@ -56,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 // カードをクリックした時の処理
-                Toast.makeText(mContext, title + " clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, title + " clicked", Toast.LENGTH_SHORT).show();
                 if (mClickListener != null) {
                     mClickListener.onItemSelected(v, position);
                }
