@@ -77,18 +77,23 @@
             </ViewFlipper>
 
         </LinearLayout>
+        
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="2.5"
             android:orientation="horizontal"
             android:weightSum="22">
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="10"/>
+                android:layout_weight="9.5"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -97,6 +102,11 @@
                 android:layout_weight="1"
                 android:id="@+id/point1"
                 android:alpha="0.7" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -109,7 +119,7 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="10"/>
+                android:layout_weight="9.5"/>
             </LinearLayout>
 
         <Space
@@ -175,7 +185,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_weight="5"
+                    android:layout_weight="7"
                     android:src="@drawable/alloww"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
@@ -185,12 +195,12 @@
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="90"/>
+                    android:layout_weight="86"/>
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_weight="5"
+                    android:layout_weight="7"
                     android:src="@drawable/allowww"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
