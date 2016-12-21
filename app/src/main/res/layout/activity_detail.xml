@@ -12,13 +12,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="100"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="100">
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,14 +30,13 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
-                />
+                android:layout_weight="3" />
 
             <com.google.vr.sdk.widgets.pano.VrPanoramaView
+                android:id="@+id/vr_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="94"
-                android:id="@+id/vr_view"
                 android:scrollbars="none">
 
             </com.google.vr.sdk.widgets.pano.VrPanoramaView>
@@ -52,8 +51,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"/>
-
+            android:layout_weight="2" />
 
 
         <LinearLayout
@@ -63,25 +61,48 @@
             android:orientation="horizontal"
             android:weightSum="100">
 
-            <ViewFlipper
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="100"
-                android:id="@+id/flipper"
-                >
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <include layout="@layout/picture_item1"/>
+                <ViewFlipper
+                    android:id="@+id/flipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <include layout="@layout/picture_item2"/>
+                    <include layout="@layout/picture_item1" />
+                    <include layout="@layout/picture_item2" />
+                </ViewFlipper>
 
-            </ViewFlipper>
+                <ImageView
+                    android:id="@+id/left_button"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/alloww" />
+
+                <ImageView
+                    android:id="@+id/right_button"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:adjustViewBounds="true"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/allowww" />
+
+            </FrameLayout>
 
         </LinearLayout>
-        
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,39 +114,39 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="9.5"/>
+                android:layout_weight="9.5" />
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/point_dark"
-                android:layout_weight="1"
                 android:id="@+id/point1"
-                android:alpha="0.7" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"/>
-
-            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/point_dark"
                 android:layout_weight="1"
-                android:id="@+id/point2"
-                android:alpha="0.7"/>
+                android:alpha="0.7"
+                android:src="@drawable/point_dark" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="9.5"/>
-            </LinearLayout>
+                android:layout_weight="0.5" />
+
+            <ImageView
+                android:id="@+id/point2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:alpha="0.7"
+                android:src="@drawable/point_dark" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9.5" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5"/>
+            android:layout_weight="5" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -137,78 +158,27 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <ImageView
+                android:id="@+id/mapIcon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:id="@+id/mapIcon"
-                android:src="@drawable/mapicon"
-                android:scaleType="fitStart"/>
+                android:scaleType="fitStart"
+                android:src="@drawable/mapicon" />
 
             <TextView
+                android:id="@+id/addressText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="16"
-                android:id="@+id/addressText"
-                tools:text="ここに住所が入るのかな?"
-                android:textSize="15sp"
+                android:gravity="center_vertical"
                 android:textColor="#ff000000"
-                android:gravity="center_vertical"/>
+                android:textSize="15sp"
+                tools:text="ここに住所が入るのかな?" />
 
         </LinearLayout>
-
     </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="100"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="50"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="15.5"
-                android:weightSum="100">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="7"
-                    android:src="@drawable/alloww"
-                    android:layout_gravity="center"
-                    android:scaleType="fitXY"
-                    android:id="@+id/left_button"
-                    />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="86"/>
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="7"
-                    android:src="@drawable/allowww"
-                    android:layout_gravity="center"
-                    android:scaleType="fitXY"
-                    android:id="@+id/right_button" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </FrameLayout>
 
 </FrameLayout>

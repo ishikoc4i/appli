@@ -1,11 +1,13 @@
 package com.codeforishinomaki.sample;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -14,7 +16,7 @@ import android.widget.ViewFlipper;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     private VrPanoramaView panoWidgetView;
     private ImageLoaderTask backgroundImageLoaderTask;
@@ -91,6 +93,20 @@ public class DetailActivity extends AppCompatActivity {
         pic4.setImageResource(R.drawable.picture4);
         pic5.setImageResource(R.drawable.picture5);
         pic6.setImageResource(R.drawable.picture6);
+
+        pic1.setTag(R.id.pic_item1, R.drawable.picture1);
+        pic2.setTag(R.id.pic_item2, R.drawable.picture2);
+        pic3.setTag(R.id.pic_item3, R.drawable.picture3);
+        pic4.setTag(R.id.pic_item4, R.drawable.picture4);
+        pic5.setTag(R.id.pic_item5, R.drawable.picture5);
+        pic6.setTag(R.id.pic_item6, R.drawable.picture6);
+
+        pic1.setOnClickListener(this);
+        pic2.setOnClickListener(this);
+        pic3.setOnClickListener(this);
+        pic4.setOnClickListener(this);
+        pic5.setOnClickListener(this);
+        pic6.setOnClickListener(this);
 
         Point1 = (ImageView)findViewById(R.id.point1);
         Point2 = (ImageView)findViewById(R.id.point2);
@@ -262,5 +278,21 @@ public class DetailActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        int image = (int) v.getTag(id);
+
+        ImageView iv = new ImageView(DetailActivity.this);
+        iv.setImageResource(image);
+        iv.setScaleType(ImageView.ScaleType.FIT_XY);
+        iv.setAdjustViewBounds(true);
+        Dialog dialog = new Dialog(DetailActivity.this);
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(iv);
+        dialog.show();
+
     }
 }
