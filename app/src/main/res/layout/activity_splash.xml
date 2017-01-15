@@ -13,17 +13,18 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:scaleType="centerCrop"
+        tools:src="@drawable/sp_pic23"
         android:layout_weight="0" />
 
 
         <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-        android:textColor="#ffffff"
-        android:text="Iscene"
-        android:textSize="50dp"
+            android:textColor="#ffffff"
+            android:text="Iscene"
+            android:textSize="50dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 

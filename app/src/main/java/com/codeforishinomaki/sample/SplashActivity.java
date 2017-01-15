@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class SplashActivity extends Activity {
 
-    int startTime = 1000;       //メインアクティビティが起動するまでの時間
+    int startTime = 1100;       //メインアクティビティが起動するまでの時間
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,11 @@ public class SplashActivity extends Activity {
 
     void randomImage(){      //ランダムに背景画像を決定するやつ実行
         int [] images = {
-                R.drawable.sp_pic4,
-                R.drawable.sp_pic5,
-                R.drawable.sp_pic3,
-                R.drawable.sp_pic6,
-                R.drawable.sp_pic7,};
+                R.drawable.sp_pic1, R.drawable.sp_pic2, R.drawable.sp_pic3, R.drawable.sp_pic4,
+                R.drawable.sp_pic5, R.drawable.sp_pic6, R.drawable.sp_pic7, R.drawable.sp_pic8,
+                R.drawable.sp_pic10, R.drawable.sp_pic12, R.drawable.sp_pic13, R.drawable.sp_pic14,
+                R.drawable.sp_pic15, R.drawable.sp_pic17, R.drawable.sp_pic19, R.drawable.sp_pic20,
+                R.drawable.sp_pic21, R.drawable.sp_pic22, R.drawable.sp_pic23, R.drawable.sp_pic25};
 
         Random rnd = new Random();
         int ran = rnd.nextInt(images.length);
